@@ -78,10 +78,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'myshop',
-        'USER': 'admin',
-        'PASSWORD': 'admin',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'USER': os.getenv('db_shop_login'),
+        'PASSWORD': os.getenv('db_shop_login'),
+        'HOST': os.getenv('db_shop_host'),
+        'PORT': os.getenv('db_shop_port'),
     }
 }
 
