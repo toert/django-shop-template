@@ -19,4 +19,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^P<category_slug>/$', views.list_products, name='list_products_by_category')
 ]
