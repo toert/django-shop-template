@@ -17,7 +17,10 @@ from django.conf.urls import url
 
 from . import views
 
+
+#app_name = 'catalog'
 urlpatterns = [
     url(r'^$', views.list_products, name='non_category'),
-    url(r'(?P<category_slug>[-\w]+)/$', views.list_products, name='list_products_by_category')
+    url(r'^(?P<category_slug>[-\w]+)/$', views.list_products, name='list_products_by_category'),
+    url(r'^(?P<category_slug>[-\w]+)/(?P<id>\d+)-(?P<product_slug>[-\w]+)/$', views.render_product_page, name='render_product')
 ]

@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
 
 class Category(models.Model):
@@ -11,6 +12,9 @@ class Category(models.Model):
         ordering = ['name']
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
+
+    def get_absolute_url(self):
+        return reverse('catalog:list_products', args=[self.slug])
 
     def __str__(self):
         return self.name
@@ -34,6 +38,12 @@ class Product(models.Model):
         index_together = [
             ['id', 'slug']
         ]
+
+    def get_absolute_url(self):
+        return reverse('catalog:render_product', kwargs={'id': self.id,
+                                                         'product_slug': self.slug,
+                                                         'category_slug': self.category.slug})
+
     def __str__(self):
         return '{}/{}'.format(self.category, self.name)
 

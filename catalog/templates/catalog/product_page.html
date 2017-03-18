@@ -1,0 +1,35 @@
+{% extends 'catalog/base.html' %}
+
+{% load static %}
+
+{% block title %}
+  {% if category %} {{ category.name }} {% else %} Страница товаров {% endif %}
+{% endblock %}
+
+{% block content %}
+  <div id="sidebar" class="col-sm-3">
+    <h3>Категории</h3>
+    <ul>
+      <li {% if not category %} class="selected" {% endif %}>
+        <a href=" ">Все</a>
+      </li>
+      {% for cat in categories %}
+        <li {% if category.slug == cat.slug %} class="selected" {% endif %}>
+          <a href=" ">{{ cat.name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div id="main" class="product_list col-sm-9">
+    <h1>{{ product.name }}</h1>
+    <div class="items row">
+      
+        <div class="item col-sm-4">
+          
+            <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no-image.jpg"%}{% endif %}" class="img-responsive">
+          
+          {{ product.price }} руб.
+        </div>
+    </div>
+  </div>
+{% endblock %}
