@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'myshop',
         'USER': os.getenv('db_shop_login'),
-        'PASSWORD': os.getenv('db_shop_login'),
+        'PASSWORD': os.getenv('db_shop_password'),
         'HOST': os.getenv('db_shop_host'),
         'PORT': os.getenv('db_shop_port'),
     }
@@ -124,3 +124,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

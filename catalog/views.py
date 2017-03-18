@@ -13,7 +13,7 @@ def list_products(request, category_slug=None):
     else:
         current_category = None
         products = Product.objects.all()
-    return render(request, 'templates/catalog/list.html', {
+    return render(request, 'catalog/list.html', {
                   'category': current_category,
                   'products': products
     })

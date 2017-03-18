@@ -93,5 +93,5 @@ ENV/
 # DBs
 *.sqlite3
 # Files of project
-catalog/products_images/
-catalog/categories_images/
+products_images/
+categories_images/
