@@ -2,7 +2,6 @@ from django.db import models
 from catalog.models import Product
 
 
-
 class Order(models.Model):
     first_name = models.CharField(max_length=200, verbose_name='Имя')
     last_name = models.CharField(max_length=200, verbose_name='Фамилия')

@@ -4,7 +4,7 @@ from .models import Category, Product, ProductAttribute
 
 class ProductAttributeInline(admin.TabularInline):
     model = ProductAttribute
-    raw_id_field = ['product']
+    #raw_id_field = ('product',)
 
 
 class CategoryAdmin(admin.ModelAdmin):

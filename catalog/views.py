@@ -3,8 +3,6 @@ from .models import Category, Product
 from cart.forms import CartAddProductForm
 
 
-
-
 def list_products(request, category_slug=None):
     if category_slug:
         current_category = get_object_or_404(Category, slug=category_slug)

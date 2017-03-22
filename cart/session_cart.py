@@ -35,6 +35,10 @@ class Cart(object):
     def get_total_price(self):
         return sum(Decimal(product['total_price']) for product in self.cart.values())
 
+    def clear(self):
+        for product_id in self.cart.values():
+            self.remove_product_from_cart(product_id)
+
     def __iter__(self):
         product_ids = self.cart.keys()
         products_in_cart = Product.objects.filter(id__in=product_ids).all()

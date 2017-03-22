@@ -58,4 +58,4 @@ class ProductAttribute(models.Model):
         verbose_name_plural = 'Характеристики Товаров'
 
     def __str__(self):
-        return self.product, self.attribute_name, self.attribute_value
+        return '{}-{}-{}'.format(self.product, self.attribute_name, self.attribute_value)
