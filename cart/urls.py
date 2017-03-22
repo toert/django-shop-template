@@ -18,10 +18,8 @@ from django.conf.urls import url
 from . import views
 
 
-#app_name = 'catalog'
 urlpatterns = [
-    url(r'^$', views.list_products, name='list_all_products'),
-    url(r'^(?P<category_slug>[-\w]*)/$', views.list_products, name='list_products_by_category'),
-    url(r'^(?P<category_slug>[-\w]+)/(?P<id>\d+)-(?P<product_slug>[-\w]+)/$',
-        views.render_product_page, name='render_product')
+    url(r'^$', views.cart_detail, name='open_cart'),
+    url(r'^add/(?P<product_id>[-\d]*)/$', views.add_to_cart, name='add'),
+    url(r'^remove/(?P<product_id>[-\d]+)/$', views.remove_from_cart, name='remove')
 ]

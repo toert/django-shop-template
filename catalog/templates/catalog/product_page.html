@@ -21,14 +21,21 @@
     </ul>
   </div>
   <div id="main" class="product_list col-sm-9">
-    <h1>{{ product.name }}</h1>
+    <h1>{{ product.name }}</h1> <h2>{{ product.price }} руб.</h2>
     <div class="items row">
       
-        <div class="item col-sm-4">
+        <div class="item col-sm-12">
           
             <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no-image.jpg"%}{% endif %}" class="img-responsive">
+          <h4>Описание: {{ product.description }}</h4>
+          <h4>Осталось на складе: {{ product.stock }}</h4>
+    <form action="{% url "cart:add" product.id %}" method="post">
+        {{ cart_form }}
+        {% csrf_token %}
+        <input type="submit" value="Добавить в корзину">
+    </form>
           
-          {{ product.price }} руб.
+          
         </div>
     </div>
   </div>
