@@ -3,6 +3,7 @@ from django.views.decorators.http import require_POST
 from catalog.models import Product
 from .session_cart import Cart
 from .forms import CartAddProductForm
+#from cart.forms import CartQuantityProduct
 
 
 @require_POST
@@ -33,9 +34,8 @@ def cart_detail(request):
 @require_POST
 def update_quantity(request):
     cart = Cart(request)
-    #for product in request.POST.keys():
-        #print('---------')
-        #print(product)
-        #print('---------')
-        #cart.add_product(product_id=pr)
-    print(request.POST)
+    for key in request.POST:
+        if key not in ('csrfmiddlewaretoken', 'submit'):
+            cart.add_product(product_id=key,
+                             quantity=int(request.POST[key]))
+    return redirect('cart:open_cart')

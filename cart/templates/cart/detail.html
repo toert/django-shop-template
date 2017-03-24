@@ -13,9 +13,9 @@
             <th>Изображение</th>
             <th>Продукт</th>
             <th>Количество</th>
-            <th>Удалить</th>
-            <th>Полная цена</th>
             <th>Цена</th>
+            <th>Полная цена</th>
+              <th>Удалить</th>
           </tr>
         </thead>
         <tbody>
@@ -24,26 +24,29 @@
               <tr>
                 <td>
                   <a href="{{ product.get_absolute_url }}">
-                    <img src="{{ product.image.url }}" alt="no_image">
+                    <img src="{{ product.image.url }}" alt="no_image" style="max-height: 100px;">
                   </a>
                 </td>
                 <td>{{ product.name }}</td>
-                <td><input name="{{ product.id }}" type="number" step="1" min="0" max="" value="{{ item.quantity }}" title="Кол-во" size="4" pattern="[0-9]*" inputmode="numeric"></td>
-                <td><a href="{% url 'cart:remove' product.id %}">Удалить</a></td>
+                <td><input name="{{ product.id }}" type="number" step="1" min="0" max="" value="{{ item.quantity }}" title="Кол-во" size="1" pattern="[0-9]*" inputmode="numeric" class="form-control" style="max-width: 70px;"></td>
+                
                 <td class="num">{{ item.price }} руб.</td>
                 <td class="num">{{ item.total_price }} руб.</td>
+                  <td><a href="{% url 'cart:remove' product.id %}">Удалить</a></td>
               </tr>
             {% endwith %}
           {% endfor %}
             {% csrf_token %}
-            <input name="submit" type="submit" value="Обновить">
             <tr class="total">
-              <td>Total</td>
-              <td colspan="4"></td>
+              
+              <td colspan="2"></td>
+                <td><input name="submit" type="submit" value="Обновить"></td>
+                <td>Total</td>
               <td class="num">{{ cart.get_total_price }} руб.</td>
             </tr>
         </tbody>
       </table>
+        
 </form>
   <p class="text-right">
     <a href="{% url "catalog:list_all_products"%}" class="btn">Продолжить Шопинг</a>
