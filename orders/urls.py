@@ -19,8 +19,5 @@ from . import views
 
 
 urlpatterns = [
-    url(r'^$', views.cart_detail, name='open_cart'),
-    url(r'^add/(?P<product_id>[-\d]*)/$', views.add_to_cart, name='add'),
-    url(r'^remove/(?P<product_id>[-\d]+)/$', views.remove_from_cart, name='remove'),
-    url(r'^update/$', views.update_quantity, name='update_quantity'),
+    url(r'^create/$', views.create_order, name='create_order')
 ]

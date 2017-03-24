@@ -20,7 +20,7 @@ class Cart(object):
                                  'price': str(price_of_product),
                                  'total_price': str(price_of_product * quantity)}
 
-        if self.cart[product_id]['quantity'] < 0:
+        if self.cart[product_id]['quantity'] <= 0:
             del self.cart[product_id]
         self.save_session()
 
@@ -36,8 +36,8 @@ class Cart(object):
         return sum(Decimal(product['total_price']) for product in self.cart.values())
 
     def clear(self):
-        for product_id in self.cart.values():
-            self.remove_product_from_cart(product_id)
+        del self.session[settings.CART_SESSION_ID]
+        self.session.modified = True
 
     def __iter__(self):
         product_ids = self.cart.keys()
@@ -47,4 +47,4 @@ class Cart(object):
             yield self.cart[str(product.id)]
 
     def __len__(self):
-        return len(self.cart.keys())
+        return sum([int(product['quantity']) for product in self.cart.values()])

@@ -12,7 +12,7 @@ class Order(models.Model):
     description = models.CharField(max_length=200, verbose_name='Краткое описание')
     created = models.DateField(verbose_name='Дата оформления заказа', auto_now_add=True)
     updated = models.DateField(verbose_name='Дата последнего обновления', auto_now=True)
-    when_paid = models.DateField(verbose_name='Дата оплаты')
+    when_paid = models.DateField(verbose_name='Дата оплаты', default=None, null=True)
     #is_done = models.BooleanField(verbose_name='Исполнено', default=False)
 
     class Meta:
